@@ -54,6 +54,8 @@ Normalizing the data and batch normalizing layer outputs were used to counteract
 
 I also tried counteracting this by forcing the weights of the inputs going into the multiplication operator to be either 0 or 1 (i.e. a selection layer of some sort). I experimented with using binary weights on a toy example, but had trouble with the network training stalling when the weights reached 0, as the gradient for the previous layer weights would also be 0. There's also the edge case where if the gradient only updates the weights to values beyond the 1 or 0 threshold, the weight values would not change and thus the neural network training would stall. As such, I haven't tried binary weights on the neural network structure I described above for symbolic regression.
 
+L1 regularization was tried to force more weights to be 0, but it didn't seem to work for varying values I tried. Experimentally, the algorithm performed better without any regularization at all.
+
 ### Additional Reading
 * [AI Feynman](https://arxiv.org/pdf/1905.11481.pdf)
 * [AI Feynman 2.0](https://arxiv.org/pdf/2006.10782.pdf)
