@@ -188,7 +188,7 @@ def run(x_original,y_original,config):
     start_time = time.time()
     while (train_loss > config['training']['loss_cutoff']) and (current_learning_rate > config['training']['learning_rate_cutoff']):
         # fit model
-        model.fit([x[:,0],x[:,1]],y,batch_size=x.shape[0],epochs=config['training']['epoch_interval'],verbose=0)
+        model.fit([x[:,i] for i in range(config['network']['input_dimension'])],y,batch_size=x.shape[0],epochs=config['training']['epoch_interval'],verbose=0)
         train_loss = mse(x,y,model)
         validation_loss = mse(val_x,val_y,model)
 
